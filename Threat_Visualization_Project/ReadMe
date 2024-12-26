@@ -1,0 +1,24 @@
+# AI-Driven Security Threat Visualization Platform
+
+A Python-based platform that automates the collection, analysis, and visualization of security threat intelligence data from public APIs like AlienVault OTX. This project empowers cybersecurity professionals to identify, classify, and prioritize potential threats with actionable insights and interactive visualizations.
+
+---
+
+## **Features**
+1. **Threat Data Collection**
+   - Fetches indicators of compromise (IoCs) such as IPs, CVEs, domains, and file hashes using the AlienVault OTX API.
+   - Stores threat data in a structured JSON format for analysis.
+
+2. **Data Analysis**
+   - Highlights high-risk CVEs based on descriptions, CVSS scores, or specific keywords.
+   - Counts and categorizes threat indicators by type to reveal trends and patterns.
+
+3. **Data Visualization**
+   - Generates pie charts and bar graphs to visualize the distribution of threats.
+   - Clear, legend-based visual representation for enhanced clarity.
+
+4. **Scalable Design**
+   - Built with modular Python scripts to facilitate enhancements like:
+     - Machine learning-based threat classification.
+     - Zero-day vulnerability updates when new reports are provided.
+     - Cloud deployment for real-time scalability.

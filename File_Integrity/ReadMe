@@ -1,0 +1,96 @@
+Integrity Hash Project
+This project is a file integrity monitoring tool that tracks changes in a specified directory by comparing the current state of files with a baseline hash. It detects additions, modifications, and deletions of files in the monitored directory.
+
+Key Features
+File Hashing: Computes MD5 hashes for files in a specified directory.
+Baseline Creation: Generates a baseline hash file containing the initial state of all files.
+Integrity Checks: Continuously monitors for changes, such as added, modified, or deleted files.
+Automatic Updates: Updates the baseline file when changes are detected.
+
+How It Works
+1. Directory Monitoring
+The script monitors a directory (monitor_dir) specified at the beginning of the program. By default, this is set to admin.
+
+2. Baseline Creation
+During the first run or if the baseline file (file_integrity_baseline.txt) is missing, the program creates a baseline.
+The baseline contains file paths and their corresponding MD5 hashes, stored as file_path,hash.
+
+3. Hash Calculation
+Each file in the directory is hashed using the MD5 algorithm.
+Hashing is done in chunks to handle large files efficiently.
+
+4. Integrity Check
+On each iteration (every 60 seconds), the script:
+Computes hashes for the current files in the directory.
+Compares the current file hashes with the baseline.
+Identifies three types of changes:
+New Files: Files not in the baseline.
+Modified Files: Files with mismatched hashes.
+Deleted Files: Files in the baseline but missing from the directory.
+Detected changes are logged to the console.
+
+5. Baseline Update
+When changes are detected, the baseline file is updated to reflect the new state of the directory.
+
+Program Flow
+
+-Initialization:The script checks for the existence of the baseline file.If missing, it creates a baseline by scanning the monitored directory and hashing all files.
+-Monitoring:The script enters a continuous loop, running integrity checks every 60 seconds.
+-Detection:For each check, file additions, modifications, or deletions are identified by comparing the current state with the baseline.
+-Update:If changes are detected, the baseline file is updated with the current file hashes.
+-Logging:Changes are logged to the console for visibility.
+
+
+File Structure
+admin/: Directory to monitor (can be changed in the code).
+Contains the files to be monitored.
+file_integrity_baseline.txt: The baseline file storing file paths and their hashes.
+
+
+Prerequisites
+Python 3.x
+Basic understanding of file paths and directory structures.
+
+Usage
+
+1.Run the Program: 
+python integrity_hash.py
+The program will automatically start monitoring the admin directory.
+
+2.Add Files:
+
+Place any files in the admin directory for monitoring.
+On the next integrity check, these will be logged as new files.
+
+3.Modify Files:
+
+Edit any files in the admin directory.
+Modified files will be detected and logged.
+Delete Files:
+
+4.Remove files from the admin directory.
+Deleted files will be detected and logged.
+
+5.Stop the Program:
+Terminate the script using Ctrl+C.
+
+Example Output
+When running the script, the console output might look like this:
+
+Baseline file not found. Creating new baseline.
+Baseline created.
+Checking file integrity...
+New file detected: admin/sample.txt
+File modified: admin/test.docx
+File deleted: admin/old_file.pdf
+Monitoring...
+
+Notes
+Adjust the monitor_dir variable to change the monitored directory.
+The program currently uses MD5 for hashing; for enhanced security, consider switching to a stronger algorithm like SHA-256.
+
+
+
+
+
+

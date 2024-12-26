@@ -2,7 +2,7 @@ import requests
 import json
 
 # AlienVault OTX API Key and URL
-API_KEY = "f07aa431b2375f66b36a350eb5428ce547fae4a495afda739d2c5b4777c2e870"  # Replace with your API key
+API_KEY = "YOUR_API_KEY"  # Replace with your API key
 BASE_URL = "https://otx.alienvault.com/api/v1/pulses/subscribed"
 HEADERS = {"X-OTX-API-KEY": API_KEY}
 OUTPUT_FILE = "indicators.json"
